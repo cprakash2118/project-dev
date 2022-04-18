@@ -6,7 +6,5 @@ RUN yum install -y httpd  && \
     yum clean all
 RUN echo "A base image for JBOSS 7.4 on UBI7.9" > /var/www/html/index.html && \
     sed -i s/"Listen 80"/"Listen 8080"/g /etc/httpd/conf/httpd.conf && \
-    /usr/sbin/setenforce 0 
 EXPOSE 8080
-USER apache 
 CMD ["httpd", "-D", "FOREGROUND"]
