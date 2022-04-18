@@ -4,7 +4,8 @@ LABEL description="A base image for JBOSS 7.4 on UBI7.9"
 RUN yum install -y httpd  && \
     yum clean all
 RUN echo "A base image for JBOSS 7.4 on UBI7.9" > /var/www/html/index.html && \
-    sed -i s/"Listen 80"/"Listen 8080"/g /etc/httpd/conf/httpd.conf
+    sed -i s/"Listen 80"/"Listen 8080"/g /etc/httpd/conf/httpd.conf && \
+    sed -i s/"SELINUX=enforcing"/"SELINUX=disabled"/g /etc/selinux/config
 EXPOSE 8080
 USER apache 
 CMD ["httpd", "-D", "FOREGROUND"]
