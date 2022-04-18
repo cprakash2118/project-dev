@@ -4,7 +4,6 @@ USER root
 LABEL description="A base image for JBOSS 7.4 on UBI7.9"
 RUN yum install -y httpd  && \
     yum clean all
-RUN echo "A base image for JBOSS 7.4 on UBI7.9" > /var/www/html/index.html && \
-    sed -i s/"Listen 80"/"Listen 8080"/g /etc/httpd/conf/httpd.conf && \
-EXPOSE 8080
+RUN echo "A base image for JBOSS 7.4 on UBI7.9" > /var/www/html/index.html 
+EXPOSE 80
 CMD ["httpd", "-D", "FOREGROUND"]
